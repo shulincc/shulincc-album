@@ -1,0 +1,37 @@
+---
+import Layout from '../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allAlbums = await getCollection('classalbum');
+
+// 依年度分組、算每年有幾筆相簿,由新到舊排序。年度是資料欄位不是資料夾,
+// 所以這裡在建置期用 reduce 分組,不是直接讀檔案系統結構(見 content.config.ts 說明)。
+const byYear = allAlbums.reduce((acc, entry) => {
+	const y = entry.data.year;
+	(acc[y] ??= []).push(entry);
+	return acc;
+}, /** @type {Record<string, typeof allAlbums>} */ ({}));
+
+const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a));
+const currentYear = years[0];
+---
+
+<Layout title="歷年相簿" description="樹林社區大學歷年課程與活動照片相簿">
+	<h1 class="reveal">樹林社大相簿</h1>
+	<p class="reveal" style="color:var(--color-text-muted)">
+		各年度課程與活動照片,由授課老師與行政同仁陸續上傳更新。
+	</p>
+
+	{years.length === 0 ? (
+		<p>目前還沒有相簿內容,請稍後再回來看看。</p>
+	) : (
+		<div class="year-grid reveal">
+			{years.map((y) => (
+				<a class:list={['year-card', { 'is-current': y === currentYear }]} href={`/${y}/`}>
+					<span class="year-num">{y}</span>
+					<span class="year-count">{byYear[y].length} 個相簿</span>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>

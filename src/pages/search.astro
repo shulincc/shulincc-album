@@ -1,0 +1,44 @@
+---
+// 2026-09-17 全站搜尋——用 Pagefind(https://pagefind.app/),Astro 靜態站的標準
+// 搜尋方案:不用架資料庫或後端伺服器,build 完之後另外跑一次 pagefind 掃過所有
+// 產生出來的 HTML 頁面自動建索引(見 package.json 的 build script,順序是先
+// astro build 產生 dist/,再跑 pagefind --site dist 幫 dist/ 建一份索引放在
+// dist/pagefind/ 底下)。索引檔跟搜尋 UI 都是純前端 JS,訪客端直接在瀏覽器裡
+// 查,不用打伺服器 API。
+//
+// 這裡引用的 /pagefind/pagefind-ui.js、/pagefind/pagefind-ui.css 這兩個檔案是
+// pagefind 在 build 完之後才產生的,`astro dev` 開發模式下不會有這兩個檔案
+// (所以本機開發時這個頁面搜尋不會動,是正常現象,要跑過一次完整 build 之後
+// 用 `npm run preview` 開才看得到搜尋真的在動)。
+import Layout from '../components/Layout.astro';
+---
+
+<Layout title="搜尋" description="搜尋樹林社大相簿歷年課程與活動照片相簿">
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>搜尋
+	</p>
+	<h1 class="reveal">搜尋相簿</h1>
+	<p style="color:var(--color-text-muted); margin-top:-0.8rem;">可以搜班級/活動名稱、老師、簡介內文裡的關鍵字。</p>
+
+	<div id="search" class="reveal" style="margin-top:1.5rem;"></div>
+
+	<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+	<script is:inline src="/pagefind/pagefind-ui.js"></script>
+	<script is:inline>
+		window.addEventListener('DOMContentLoaded', () => {
+			if (typeof PagefindUI === 'undefined') return; // 開發模式下還沒有索引檔,靜默跳過
+			new PagefindUI({ element: '#search', showSubResults: true, showImages: true });
+		});
+	</script>
+</Layout>
+
+<style>
+	/* Pagefind 預設樣式沿用官方色調,這裡只微調跟站內配色更貼近的幾個變數。 */
+	:root {
+		--pagefind-ui-primary: var(--color-primary);
+		--pagefind-ui-text: var(--color-text);
+		--pagefind-ui-background: var(--color-bg);
+		--pagefind-ui-border: var(--color-bg-border);
+		--pagefind-ui-font: var(--font-zh);
+	}
+</style>

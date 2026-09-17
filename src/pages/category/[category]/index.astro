@@ -1,0 +1,54 @@
+---
+// 2026-09-17 單一分類的相簿列表,跨所有年度——這是分類功能真正的價值所在
+// (年度頁只能看單一年度,這裡讓「所有瑜珈類的班級」不管哪一年都能一次看到)。
+// 網址參數用 encodeURIComponent,因為分類代碼是中文(跟 semester 的作法一致)。
+import Layout from '../../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+import { albumUrlSlug } from '../../../lib/slug';
+
+export async function getStaticPaths() {
+	const allAlbums = await getCollection('classalbum');
+	const cats = [...new Set(allAlbums.map((e) => e.data.category).filter(Boolean))];
+	return cats.map((category) => ({
+		params: { category },
+		props: {
+			albums: allAlbums
+				.filter((e) => e.data.category === category)
+				.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+		},
+	}));
+}
+
+const { category } = Astro.params;
+const { albums } = Astro.props;
+const categories = await getCollection('categories');
+const title = categories.find((c) => c.id === category)?.data.title ?? category;
+---
+
+<Layout title={`分類：${title}`} description={`樹林社區大學「${title}」分類的課程與活動照片相簿`}>
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>
+		<a href="/category/">分類瀏覽</a><span aria-hidden="true">›</span>
+		{title}
+	</p>
+	<h1 class="reveal">{title}</h1>
+
+	{albums.length === 0 ? (
+		<p>這個分類目前還沒有相簿。</p>
+	) : (
+		<div class="album-grid reveal">
+			{albums.map((album) => (
+				<a class="album-card" href={`/${album.data.year}/${albumUrlSlug(album.id, album.data.year)}/`}>
+					{album.data.cover && <img class="album-cover" src={album.data.cover} alt="" loading="lazy" />}
+					<div class="album-card-body">
+						<h3>{album.data.title}</h3>
+						<p class="album-meta">
+							{album.data.year} 年｜{album.data.semester}
+							{album.data.teacher ? `｜${album.data.teacher} 老師` : ''}
+						</p>
+					</div>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>

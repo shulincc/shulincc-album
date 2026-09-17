@@ -1,0 +1,44 @@
+---
+// 2026-09-17 單一老師跨年度的所有相簿——網址參數是中文老師姓名,用
+// encodeURIComponent 處理(跟 category 頁作法一致)。
+import Layout from '../../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+import { albumUrlSlug } from '../../../lib/slug';
+
+export async function getStaticPaths() {
+	const allAlbums = await getCollection('classalbum');
+	const teachers = [...new Set(allAlbums.map((e) => e.data.teacher).filter(Boolean))];
+	return teachers.map((teacher) => ({
+		params: { teacher },
+		props: {
+			albums: allAlbums
+				.filter((e) => e.data.teacher === teacher)
+				.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+		},
+	}));
+}
+
+const { teacher } = Astro.params;
+const { albums } = Astro.props;
+---
+
+<Layout title={`${teacher} 老師`} description={`樹林社區大學 ${teacher} 老師歷年開課相簿`}>
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>
+		<a href="/teacher/">老師索引</a><span aria-hidden="true">›</span>
+		{teacher} 老師
+	</p>
+	<h1 class="reveal">{teacher} 老師</h1>
+
+	<div class="album-grid reveal">
+		{albums.map((album) => (
+			<a class="album-card" href={`/${album.data.year}/${albumUrlSlug(album.id, album.data.year)}/`}>
+				{album.data.cover && <img class="album-cover" src={album.data.cover} alt="" loading="lazy" />}
+				<div class="album-card-body">
+					<h3>{album.data.title}</h3>
+					<p class="album-meta">{album.data.year} 年｜{album.data.semester}</p>
+				</div>
+			</a>
+		))}
+	</div>
+</Layout>

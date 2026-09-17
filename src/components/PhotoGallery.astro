@@ -1,0 +1,87 @@
+---
+// 相片縮圖牆 + 燈箱(lightbox)。參考 transitions.dev 的 modal / image-open 轉場手法:
+// 縮圖 hover 時圖片本身微放大(見 global.css .photo-thumb-btn:hover img),
+// 點開燈箱時背景淡入 + 圖片從 scale(0.92) 長到 scale(1),不是單純的顯示/隱藏,
+// 讓開合有「跳出來」的重量感。純 CSS transition + 一小段 vanilla JS,
+// 不需要額外的燈箱套件,方便同仁以後自己維護。
+interface Photo {
+	image: string;
+	caption?: string;
+}
+interface Props {
+	photos: Photo[];
+	galleryId: string;
+}
+const { photos, galleryId } = Astro.props;
+---
+
+<div class="photo-grid" data-gallery={galleryId}>
+	{photos.map((photo, i) => (
+		<button
+			type="button"
+			class="photo-thumb-btn"
+			data-index={i}
+			aria-label={photo.caption ? `放大檢視:${photo.caption}` : '放大檢視相片'}
+		>
+			<img src={photo.image} alt={photo.caption ?? ''} loading="lazy" />
+		</button>
+	))}
+</div>
+
+<div class="lightbox-overlay" data-lightbox={galleryId} role="dialog" aria-modal="true" aria-label="相片檢視">
+	<button type="button" class="lightbox-close" data-action="close" aria-label="關閉">✕</button>
+	<button type="button" class="lightbox-prev" data-action="prev" aria-label="上一張">‹</button>
+	<img data-lightbox-img src="" alt="" />
+	<button type="button" class="lightbox-next" data-action="next" aria-label="下一張">›</button>
+	<p class="lightbox-caption" data-lightbox-caption></p>
+</div>
+
+<script define:vars={{ galleryId, photos }} is:inline>
+	(() => {
+		const grid = document.querySelector(`.photo-grid[data-gallery="${galleryId}"]`);
+		const overlay = document.querySelector(`.lightbox-overlay[data-lightbox="${galleryId}"]`);
+		if (!grid || !overlay) return;
+
+		const imgEl = overlay.querySelector('[data-lightbox-img]');
+		const captionEl = overlay.querySelector('[data-lightbox-caption]');
+		let currentIndex = 0;
+
+		function show(index) {
+			const total = photos.length;
+			currentIndex = (index + total) % total;
+			const photo = photos[currentIndex];
+			imgEl.src = photo.image;
+			imgEl.alt = photo.caption ?? '';
+			captionEl.textContent = photo.caption ?? '';
+		}
+
+		function open(index) {
+			show(index);
+			overlay.classList.add('is-open');
+			document.body.style.overflow = 'hidden';
+		}
+
+		function close() {
+			overlay.classList.remove('is-open');
+			document.body.style.overflow = '';
+		}
+
+		grid.querySelectorAll('.photo-thumb-btn').forEach((btn) => {
+			btn.addEventListener('click', () => open(Number(btn.dataset.index)));
+		});
+
+		overlay.addEventListener('click', (e) => {
+			if (e.target === overlay) close();
+		});
+		overlay.querySelector('[data-action="close"]').addEventListener('click', close);
+		overlay.querySelector('[data-action="prev"]').addEventListener('click', () => show(currentIndex - 1));
+		overlay.querySelector('[data-action="next"]').addEventListener('click', () => show(currentIndex + 1));
+
+		document.addEventListener('keydown', (e) => {
+			if (!overlay.classList.contains('is-open')) return;
+			if (e.key === 'Escape') close();
+			if (e.key === 'ArrowLeft') show(currentIndex - 1);
+			if (e.key === 'ArrowRight') show(currentIndex + 1);
+		});
+	})();
+</script>

@@ -1,0 +1,41 @@
+---
+// 2026-09-17 分類總覽頁——依 classalbum 的 category 欄位分組算數量,做法照抄
+// src/pages/index.astro 依年度分組的邏輯,只是分組欄位換成 category。沒有分類的
+// 相簿(category 留空,例如舊資料裡少數沒有課程代碼的活動)不計入任何分類卡片,
+// 但也不會出錯——單純不會出現在這個列表裡,同仁之後幫它補上分類就會自動出現。
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allAlbums = await getCollection('classalbum');
+const categories = await getCollection('categories');
+const titleBySlug = new Map(categories.map((c) => [c.id, c.data.title]));
+
+const byCategory = allAlbums.reduce((acc, entry) => {
+	const c = entry.data.category;
+	if (!c) return acc;
+	(acc[c] ??= []).push(entry);
+	return acc;
+}, /** @type {Record<string, typeof allAlbums>} */ ({}));
+
+const cats = Object.keys(byCategory).sort((a, b) => byCategory[b].length - byCategory[a].length);
+---
+
+<Layout title="分類瀏覽" description="樹林社區大學歷年課程與活動照片相簿,依分類瀏覽">
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>分類瀏覽
+	</p>
+	<h1 class="reveal">依分類瀏覽</h1>
+
+	{cats.length === 0 ? (
+		<p>目前還沒有相簿標好分類。</p>
+	) : (
+		<div class="year-grid reveal">
+			{cats.map((c) => (
+				<a class="year-card" href={`/category/${encodeURIComponent(c)}/`}>
+					<span class="year-num" style="font-size:1.3rem;">{titleBySlug.get(c) ?? c}</span>
+					<span class="year-count">{byCategory[c].length} 個相簿</span>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>

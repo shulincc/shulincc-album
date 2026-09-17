@@ -1,0 +1,47 @@
+---
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+import { albumUrlSlug } from '../../lib/slug';
+
+export async function getStaticPaths() {
+	const allAlbums = await getCollection('classalbum');
+	const years = [...new Set(allAlbums.map((e) => e.data.year))];
+	return years.map((year) => ({
+		params: { year },
+		props: {
+			albums: allAlbums
+				.filter((e) => e.data.year === year)
+				.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+		},
+	}));
+}
+
+const { year } = Astro.params;
+const { albums } = Astro.props;
+---
+
+<Layout title={`${year} 年相簿`} description={`樹林社區大學 ${year} 年課程與活動照片相簿`}>
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>{year}
+	</p>
+	<h1 class="reveal">{year} 年相簿</h1>
+
+	{albums.length === 0 ? (
+		<p>這個年度目前還沒有相簿。</p>
+	) : (
+		<div class="album-grid reveal">
+			{albums.map((album) => (
+				<a class="album-card" href={`/${year}/${albumUrlSlug(album.id, year)}/`}>
+					{album.data.cover && <img class="album-cover" src={album.data.cover} alt="" loading="lazy" />}
+					<div class="album-card-body">
+						<h3>{album.data.title}</h3>
+						<p class="album-meta">
+							{album.data.semester}
+							{album.data.teacher ? `｜${album.data.teacher} 老師` : ''}
+						</p>
+					</div>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>

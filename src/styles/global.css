@@ -1,0 +1,257 @@
+/* 色彩/字體系統直接沿用主站 shulincc-site 的 global.css(森林綠 + 暖金色),
+   不是重新設計一套——同仁從官網點過來相簿站,視覺風格要一眼認得出是同一個社大,
+   不能因為分成兩個獨立部署的專案,就變成兩種不同氣質的網站。 */
+
+:root {
+	--color-primary: #17422e;
+	--color-primary-accent: #2f6f4e;
+	--color-text: #26352f;
+	--color-text-muted: #66736d;
+	--color-bg: #fbfaf5;
+	--color-bg-alt: #eaf4ee;
+	--color-bg-border: #dce7df;
+	--color-gold: #d98b3a;
+	--color-gold-hover: #bf762c;
+	--color-white: #ffffff;
+	--font-zh: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+	--font-serif-zh: 'Noto Serif TC', 'Georgia', serif;
+	--font-en: 'Lato', sans-serif;
+	--shadow-soft: 0 4px 24px rgba(38, 53, 47, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	font-family: var(--font-zh);
+	color: var(--color-text);
+	background: var(--color-bg);
+	line-height: 1.7;
+}
+a { color: var(--color-primary-accent); text-decoration: none; }
+a:hover { color: var(--color-gold-hover); }
+h1, h2, h3 {
+	color: var(--color-primary);
+	line-height: 1.4;
+	font-family: var(--font-serif-zh);
+	font-weight: 700;
+}
+
+.site-header {
+	background: var(--color-bg);
+	border-bottom: 1px solid var(--color-bg-border);
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+.site-header-inner {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding: 0.9rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
+.brand {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+}
+.brand-zh { font-size: 1.2rem; font-weight: 700; color: var(--color-primary); font-family: var(--font-serif-zh); }
+.brand-en { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--color-primary-accent); font-family: var(--font-en); font-weight: 700; }
+.brand:hover .brand-zh, .brand:hover .brand-en { color: var(--color-gold-hover); }
+
+.site-nav ul { display: flex; list-style: none; margin: 0; padding: 0; gap: 1.2rem; flex-wrap: wrap; }
+.site-nav a { color: var(--color-text); font-weight: 700; font-size: 0.9rem; }
+.site-nav a:hover { color: var(--color-primary-accent); }
+.site-nav .back-to-main {
+	background: var(--color-gold);
+	color: var(--color-white) !important;
+	padding: 0.4rem 0.9rem;
+	border-radius: 999px;
+}
+.site-nav .back-to-main:hover { background: var(--color-gold-hover); }
+
+.site-main-inner { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.site-main-inner img { max-width: 100%; height: auto; }
+
+.site-footer {
+	background: var(--color-primary);
+	color: rgba(255, 255, 255, 0.8);
+	margin-top: 3rem;
+}
+.site-footer-inner { max-width: 1120px; margin: 0 auto; padding: 2rem 1.5rem; text-align: center; font-size: 0.85rem; }
+.site-footer a { color: var(--color-gold); }
+
+/* 麵包屑 */
+.breadcrumb { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--color-primary-accent); }
+.breadcrumb span[aria-hidden] { margin: 0 0.4rem; opacity: 0.6; }
+
+/* 年度列表(首頁) */
+.year-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+.year-card {
+	display: block;
+	background: var(--color-white);
+	border: 1px solid var(--color-bg-border);
+	border-radius: 12px;
+	padding: 1.4rem 1rem;
+	text-align: center;
+	box-shadow: var(--shadow-soft);
+	transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s ease;
+}
+.year-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 28px rgba(23, 66, 46, 0.18);
+}
+.year-card .year-num {
+	font-family: var(--font-serif-zh);
+	font-size: 2rem;
+	font-weight: 900;
+	color: var(--color-primary);
+	display: block;
+}
+.year-card .year-count { font-size: 0.8rem; color: var(--color-text-muted); }
+.year-card.is-current { border-color: var(--color-gold); }
+.year-card.is-current .year-num { color: var(--color-gold-hover); }
+
+/* 班級相簿卡片列表(年度頁) */
+.album-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+.album-card {
+	display: block;
+	background: var(--color-white);
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: var(--shadow-soft);
+	transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+}
+.album-card:hover { transform: translateY(-5px) scale(1.015); box-shadow: 0 14px 32px rgba(23, 66, 46, 0.2); }
+.album-card .album-cover {
+	aspect-ratio: 4 / 3;
+	width: 100%;
+	object-fit: cover;
+	display: block;
+	background: var(--color-bg-alt);
+}
+.album-card .album-card-body { padding: 0.9rem 1rem 1.1rem; }
+.album-card h3 { font-size: 1rem; margin: 0 0 0.3rem; }
+.album-card .album-meta { font-size: 0.8rem; color: var(--color-text-muted); }
+
+/* 相簿式版面:簡介 + 相片縮圖牆 */
+.album-intro { font-size: 1.05rem; color: var(--color-text); margin-bottom: 1.5rem; }
+.photo-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 0.6rem;
+}
+.photo-grid button.photo-thumb-btn {
+	all: unset;
+	cursor: zoom-in;
+	display: block;
+	border-radius: 8px;
+	overflow: hidden;
+	aspect-ratio: 4 / 3;
+	background: var(--color-bg-alt);
+}
+.photo-thumb-btn img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.photo-thumb-btn:hover img,
+.photo-thumb-btn:focus-visible img { transform: scale(1.08); }
+
+/* 燈箱(lightbox)——參考 transitions.dev 的 modal 開合轉場:
+   scale + opacity 一起做,不是單純淡入淡出,開合更有質感。
+   純 CSS + 一小段 vanilla JS(見 Lightbox.astro),不需要額外套件。 */
+.lightbox-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+	background: rgba(15, 26, 20, 0.88);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox-overlay.is-open { opacity: 1; visibility: visible; }
+.lightbox-overlay img {
+	max-width: min(92vw, 1100px);
+	max-height: 86vh;
+	width: auto;
+	height: auto;
+	border-radius: 6px;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+	transform: scale(0.92);
+	transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.lightbox-overlay.is-open img { transform: scale(1); }
+.lightbox-caption {
+	position: absolute;
+	bottom: 1.5rem;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 0.9rem;
+}
+.lightbox-close, .lightbox-prev, .lightbox-next {
+	position: absolute;
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	width: 2.6rem;
+	height: 2.6rem;
+	font-size: 1.3rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+	background: rgba(255, 255, 255, 0.24);
+	transform: scale(1.08);
+}
+.lightbox-close { top: 1.2rem; right: 1.2rem; }
+.lightbox-prev { left: 1.2rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 1.2rem; top: 50%; transform: translateY(-50%); }
+
+@media (prefers-reduced-motion: reduce) {
+	.year-card, .album-card, .photo-thumb-btn img, .lightbox-overlay, .lightbox-overlay img {
+		transition: none !important;
+	}
+}
+
+/* 滾動漸現,跟主站同一套手法 */
+.reveal {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+	.reveal { transition: none; opacity: 1; transform: none; }
+}
+
+/* 文章式版面 */
+.article-body { font-size: 1.02rem; }
+.article-body img { border-radius: 6px; box-shadow: var(--shadow-soft); margin: 1rem 0; }

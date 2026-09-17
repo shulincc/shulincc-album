@@ -1,0 +1,79 @@
+---
+import Layout from '../../components/Layout.astro';
+import PhotoGallery from '../../components/PhotoGallery.astro';
+import { getCollection, render } from 'astro:content';
+import { experimental_AstroContainer as AstroContainer } from 'astro/container';
+import { albumUrlSlug } from '../../lib/slug';
+import { introToSafeHtml, linkifyHashtags } from '../../lib/tags';
+
+export async function getStaticPaths() {
+	const allAlbums = await getCollection('classalbum');
+	// 2026-09-17 網址不要直接用 entry.id——CMS 存檔檔名規則是「年度-代碼」
+	// (防止不同年度用同一個代碼互相覆蓋,見 lib/slug.ts 說明),但年度本身已經是
+	// 網址前一段(/{year}/...),直接把檔名整段當代碼會讓年度重複出現兩次
+	// (例如 /115/115-1151c440/)。用 albumUrlSlug 把重複的年度前綴拿掉。
+	return allAlbums.map((entry) => ({
+		params: { year: entry.data.year, slug: albumUrlSlug(entry.id, entry.data.year) },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { year } = Astro.params;
+const { title, semester, teacher, cover, intro, layout, photos } = entry.data;
+
+// 2026-09-17 Hashtag 功能——同仁在「簡介文字」或「內文」裡打的 #hashtag 要轉成
+// 連到 /tags/{tag}/ 的連結,見 lib/tags.ts 的說明。intro 是純文字,直接跳脫+轉連結
+// 就好;文章式版面的 body 是 markdown 轉出來的 HTML,要先用 Container API render
+// 成字串,才能對輸出的 HTML 文字做 hashtag 轉連結(不能對 <Content /> 這個 Astro
+// 元件本身做字串處理)。
+const introHtml = intro ? introToSafeHtml(intro) : null;
+
+// 文章式版面才需要把 markdown body render 成 HTML;相簿式版面用不到,
+// 不用每篇都白白 render 一次。
+let articleBodyHtml: string | null = null;
+if (layout === 'article') {
+	const { Content } = await render(entry);
+	const container = await AstroContainer.create();
+	const rawHtml = await container.renderToString(Content);
+	articleBodyHtml = linkifyHashtags(rawHtml);
+}
+---
+
+<Layout title={title} description={intro ?? `${entry.data.year} 年 ${title}`}>
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>
+		<a href={`/${year}/`}>{year} 年相簿</a><span aria-hidden="true">›</span>
+		{title}
+	</p>
+	<h1 class="reveal">{title}</h1>
+	<p class="reveal" style="color:var(--color-text-muted); margin-top:-0.8rem;">
+		{semester}
+		{teacher ? `｜${teacher} 老師` : ''}
+	</p>
+
+	{cover && layout === 'article' && (
+		<img src={cover} alt="" style="width:100%; border-radius:10px; box-shadow:var(--shadow-soft); margin:1rem 0 1.5rem;" />
+	)}
+
+	{layout === 'gallery' ? (
+		<>
+			{introHtml && <p class="album-intro reveal" set:html={introHtml} />}
+			{photos.length > 0 ? (
+				<PhotoGallery photos={photos} galleryId={entry.id} />
+			) : (
+				<p>這個相簿還沒有照片。</p>
+			)}
+		</>
+	) : (
+		<div class="article-body reveal">
+			{articleBodyHtml && <Fragment set:html={articleBodyHtml} />}
+			{photos.length > 0 && (
+				<>
+					<h2>相片集</h2>
+					<PhotoGallery photos={photos} galleryId={entry.id} />
+				</>
+			)}
+		</div>
+	)}
+</Layout>

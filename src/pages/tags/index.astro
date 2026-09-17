@@ -1,0 +1,47 @@
+---
+// 2026-09-17 標籤雲首頁——搬自主站 tags.html.ts 的文字雲呈現方式(字級隨出現次數
+// 縮放),但相簿站不需要保留 .html 副檔名(沒有舊網址包袱),直接用一般 .astro
+// 頁面就好,不用像主站那樣特地用 Container API 產生 endpoint。
+import Layout from '../../components/Layout.astro';
+import { getAllTagRows } from '../../lib/tags';
+
+const tagMap = await getAllTagRows();
+const entries = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1].length);
+const maxCount = entries.length ? entries[0][1].length : 1;
+const minCount = entries.length ? entries[entries.length - 1][1].length : 1;
+
+function scale(count: number) {
+	if (maxCount === minCount) return 1.4;
+	const ratio = (count - minCount) / (maxCount - minCount);
+	return 0.85 + ratio * (2.2 - 0.85);
+}
+---
+
+<Layout title="標籤雲" description="樹林社大相簿全站標籤雲,依標籤瀏覽相關相簿。">
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>標籤雲
+	</p>
+	<h1 class="reveal">標籤雲</h1>
+	<p class="tag-cloud-intro">點擊任一個標籤,查看所有打了同一個 #hashtag 的相簿。簡介文字或內文裡直接打 # 就會自動變成標籤,不用另外填欄位。</p>
+
+	{entries.length === 0 ? (
+		<p class="stories-empty">目前還沒有相簿打 #hashtag,編輯簡介或內文時可以直接打 # 加標籤。</p>
+	) : (
+		<div class="tag-cloud reveal">
+			{entries.map(([tag, rows]) => (
+				<a class="tag-cloud-item" style={`font-size: ${scale(rows.length).toFixed(2)}rem;`} href={`/tags/${encodeURIComponent(tag)}/`}>
+					#{tag}<span class="tag-cloud-count">{rows.length}</span>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>
+
+<style>
+	.tag-cloud-intro { color: var(--color-text-muted); margin-top: -0.5rem; }
+	.tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: baseline; margin-top: 1.5rem; }
+	.tag-cloud-item { color: var(--color-primary); font-weight: 700; text-decoration: none; line-height: 1.4; }
+	.tag-cloud-item:hover { color: var(--color-gold-hover); text-decoration: underline; }
+	.tag-cloud-count { font-size: 0.7rem; font-weight: 400; color: var(--color-text-muted); margin-left: 0.15rem; }
+	.stories-empty { color: var(--color-text-muted); }
+</style>

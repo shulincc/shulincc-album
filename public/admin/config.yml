@@ -1,0 +1,222 @@
+# 樹林社大相簿(album.shulincc.org)後台設定。
+# 跟主站 shulincc-site 是完全獨立的兩個東西:各自獨立的 Astro 專案、各自獨立的
+# GitHub repo(shulincc/shulincc-album,2026-07-29 已確認拆開,不跟主站共用同一個
+# repo——詳細理由見下面 backend.repo 的註解)、各自獨立的 Cloudflare Pages 部署。
+# 唯一沿用主站的是 OAuth Worker(base_url 那一行)——因為那個 Worker 是通用的
+# GitHub 轉接器,不綁定特定 repo,兩邊都能直接用,不算「共用 repo」。
+
+backend:
+  name: github
+  # 2026-07-29 已確認:拆成獨立 repo(不跟主站 shulincc-site 共用同一個),理由——
+  # 兩個是完全獨立的 Astro 專案,沒有共用程式碼,部署也已經是各自的 Cloudflare
+  # Pages 專案;拆開的話以後要讓志工/攝影同好只協助管理相簿站內容時,GitHub 權限
+  # 可以只開這個 repo,不會連帶曝露主站原始碼。base_url 這個 OAuth Worker 是通用的
+  # GitHub 轉接器,不綁定特定 repo,兩邊都可以直接沿用,不用另外申請。
+  # 部署前請把下面這行改成實際建立的獨立 repo 名稱(例如 shulincc/shulincc-album)。
+  repo: shulincc/shulincc-album # TODO: 確認實際建立的 repo 名稱是否就是這個
+  branch: main
+  base_url: https://sveltia-cms-auth.mail-25e.workers.dev
+
+site_url: https://album.shulincc.org
+logout_redirect_url: https://album.shulincc.org
+app_title: 樹林社大相簿後台
+logo:
+  src: /icon-192.png
+  show_in_header: true
+
+slug:
+  encoding: unicode
+  clean_accents: true
+
+# 2026-07-28 規劃確認:同仁上傳照片走 Cloudflare R2,不進 GitHub repo(理由見規劃討論——
+# 相簿站上傳頻率高、量體會持續成長,進 repo 會讓 git history 越養越肥)。
+# prefix 這一欄「一年手動改一次」——例如現在是 115 學年度,設成 album/115/;
+# 明年開學期(116年)再手動把這裏改成 album/116/,不需要每篇文章各自處理路徑,
+# 同仁整年上傳的照片就會自動落在同一個年度資料夾,之後要清空間時直接在 R2
+# Dashboard 勾整個資料夾刪除即可(不影響已經寫進 content 檔案裡的網址,因為
+# 網址是完整路徑,不是靠 prefix 動態組出來的)。
+#
+# 部署前必填:access_key_id / bucket / account_id / public_url 四個都要換成
+# 實際建立的 R2 bucket 資訊,目前是佔位值,不能直接上線使用。
+media_libraries:
+  cloudflare_r2:
+    access_key_id: 'REPLACE_WITH_R2_ACCESS_KEY_ID'
+    bucket: 'shulincc-assets' # 沿用主站規劃的同一顆 bucket,用 prefix 區分不同用途
+    account_id: 'REPLACE_WITH_CLOUDFLARE_ACCOUNT_ID'
+    public_url: 'https://assets.shulincc.org' # 沿用主站規劃的 R2 自訂網域
+    prefix: 'album/115/' # 每年手動更新這一行
+  all:
+    # 上傳前自動轉 WebP + 限制最大邊長,同仁不用自己壓圖,詳見規劃討論。
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
+      svg:
+        optimize: true
+
+collections:
+  # 2026-07-29 新增:年度清單。純粹是給上面 classalbum 的「年度」欄位(relation
+  # widget)選的來源清單,同仁自己就能在這裡新增下一個學年度,不用回來改這份
+  # config.yml。已經先建好 115/114/113 三筆,對應目前程式碼裡已經有的年度。
+  - name: years
+    label: 年度清單
+    label_singular: 一個年度
+    folder: src/content/site-config/years
+    create: true
+    slug: '{{fields.slug}}'
+    fields:
+      - label: 年度代碼
+        name: slug
+        widget: string
+        hint: '例如 116,之後這個年度的班級相簿都會選到這裡新增的這一筆'
+      - label: 顯示名稱
+        name: title
+        widget: string
+        hint: '例如「116學年度」,會顯示在班級相簿的年度下拉選單裡'
+  # 2026-07-29 新增:學期別清單,道理跟年度清單一樣——同仁發現實際上不只春季/秋季/
+  # 活動三種(舊站就有暑期班的先例),所以也改成 CMS 可自行新增的清單,不寫死在
+  # 這份 config.yml 裡。已經先建好春季/秋季/暑期/寒假/活動五筆常見類別。
+  - name: semesters
+    label: 學期別清單
+    label_singular: 一個學期別
+    folder: src/content/site-config/semesters
+    create: true
+    slug: '{{fields.slug}}'
+    fields:
+      - label: 學期代碼
+        name: slug
+        widget: string
+        hint: '例如 暑期,之後這個學期別的班級相簿都會選到這裡新增的這一筆(存進資料的就是這個字串)'
+      - label: 顯示名稱
+        name: title
+        widget: string
+        hint: '例如「暑期班」,會顯示在班級相簿的學期下拉選單裡'
+  # 2026-09-17 新增:課程分類清單,道理跟年度/學期別清單一樣——同仁自己在這裡新增/
+  # 改名分類,不用回來改程式碼。已經先建好「才藝人文」「健康生活」「社團行動」三筆
+  # 起始分類(從既有 115 春季課程代碼中間的英文字母 a/b/c 對照課程標題規律歸納出來,
+  # 不一定是學校選課系統正式的官方分類名稱,同仁看到不準確歡迎直接在這裡改名或
+  # 增減分類)。
+  - name: categories
+    label: 分類清單
+    label_singular: 一個分類
+    folder: src/content/site-config/categories
+    create: true
+    slug: '{{fields.slug}}'
+    fields:
+      - label: 分類代碼
+        name: slug
+        widget: string
+        hint: '例如 戶外體驗,之後這個分類的班級相簿都會選到這裡新增的這一筆'
+      - label: 顯示名稱
+        name: title
+        widget: string
+        hint: '例如「戶外體驗」,會顯示在班級相簿的分類下拉選單跟分類瀏覽頁'
+  - name: classalbum
+    label: 班級相簿
+    label_singular: 一個班級相簿
+    folder: src/content/classalbum
+    create: true
+    slug: '{{year}}-{{fields.slug}}'
+    sortable_fields:
+      fields: [date, year, title]
+      default:
+        field: date
+        direction: descending
+    view_groups:
+      - field: year
+        label: 年度
+    fields:
+      - { label: 班級/活動名稱, name: title, widget: string }
+      - label: 網址代碼
+        name: slug
+        widget: string
+        hint: '英數字即可。有課程代碼的班級直接填代碼最方便(例如 1151c440);沒有代碼的活動(例如運動會、成果展),自己取一個好記的英文/數字組合即可(例如 sports-day),系統會自動處理同名衝突,不用擔心跟別的年度撞在一起'
+      - label: 年度
+        name: year
+        widget: relation
+        collection: years
+        search_fields: [title]
+        display_fields: [title]
+        value_field: '{{slug}}'
+        hint: '選這個班級/活動屬於哪個年度;清單裡沒有你要的年度,先去「年度清單」這個分類新增一筆'
+      - label: 學期
+        name: semester
+        widget: relation
+        collection: semesters
+        search_fields: [title]
+        display_fields: [title]
+        value_field: '{{slug}}'
+        hint: '清單裡沒有你要的學期別(例如暑期、寒假),先去「學期別清單」這個分類新增一筆'
+      - label: 課程分類(選填)
+        name: category
+        widget: relation
+        collection: categories
+        search_fields: [title]
+        display_fields: [title]
+        value_field: '{{slug}}'
+        required: false
+        hint: '選這個班級/活動大致屬於哪一類,方便訪客用分類瀏覽;清單裡沒有你要的分類,先去「分類清單」新增一筆'
+      - { label: 授課老師, name: teacher, widget: string, required: false }
+      - { label: 排序用日期, name: date, widget: datetime, format: 'YYYY-MM-DD' }
+      - { label: 封面圖, name: cover, widget: image, required: false }
+      - label: 呈現版面
+        name: layout
+        widget: select
+        default: gallery
+        options:
+          - { label: 相簿式(簡介文字+相片牆,大部分情況用這個), value: gallery }
+          - { label: 文章式(完整圖文並茂的內容,像寫一篇文章), value: article }
+      - label: 簡介文字
+        name: intro
+        widget: text
+        required: false
+        hint: '相簿式版面專用,顯示在相片牆上方,一兩句話說明這堂課/這場活動就好;留空的話直接顯示相片牆,不會有空白區塊'
+      - label: 相片清單
+        name: photos
+        widget: list
+        summary: '{{fields.caption}}'
+        fields:
+          - { label: 照片, name: image, widget: image }
+          - { label: 說明文字(選填), name: caption, widget: string, required: false }
+      - label: 內文
+        name: body
+        widget: markdown
+        required: false
+        hint: '文章式版面專用,可直接貼 HTML 原始碼(YouTube 嵌入等),編輯器預設是「原始碼」模式;相簿式版面不用填這欄'
+  # 2026-09-17 短網址,搬自主站 shulincc-site 同一套設計(理由見規劃討論):相簿站
+  # 網址本身已經算短(/年度/代碼/),不用每筆內容都套短網址,這個分類只給少數
+  # 要特別推廣、印在文宣/QR code 上的相簿用。存檔後由 scripts/generate-redirects.mjs
+  # 在 build 時自動轉成 Cloudflare Pages 的真正轉址規則,不需要額外操作。
+  - name: shortlink
+    label: 短網址
+    label_singular: 一組短網址
+    folder: src/content/shortlink
+    create: true
+    slug: '{{fields.slug}}'
+    fields:
+      - label: 名稱(僅後台看得到,訪客不會看到)
+        name: label
+        widget: string
+        hint: '例如「115年度成果展」,方便你自己在列表裡辨認'
+      - label: 網址代稱(選填)
+        name: slug
+        widget: string
+        required: false
+        hint: '決定最終短網址是 album.shulincc.org/s/你填的字,自己想一個好記的英文/數字組合,例如 expo2026;留空的話系統會自動產生一組 5 碼代碼(存檔後要等 build 完成才看得到實際代碼)'
+      - label: 目的地網址
+        name: destination
+        widget: string
+        hint: '要跳轉到的完整網址,例如某個班級相簿的完整網址 https://album.shulincc.org/115/1151c440/'
+      - label: 轉址類型
+        name: redirectType
+        widget: select
+        default: '302'
+        options:
+          - { label: '暫時轉址(以後可能會改目的地,大部分情況用這個)', value: '302' }
+          - { label: '永久轉址(目的地確定不會再變)', value: '301' }
+      - label: 備註(選填)
+        name: note
+        widget: text
+        required: false

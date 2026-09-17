@@ -1,0 +1,39 @@
+---
+// 標籤內頁——列出某一個 #hashtag 底下所有相簿,網址 /tags/{tag}/。
+import Layout from '../../../components/Layout.astro';
+import { getAllTagRows } from '../../../lib/tags';
+
+export async function getStaticPaths() {
+	const tagMap = await getAllTagRows();
+	return Array.from(tagMap.entries()).map(([tag, rows]) => ({
+		params: { tag },
+		props: { tag, rows },
+	}));
+}
+
+const { tag, rows } = Astro.props;
+---
+
+<Layout title={`#${tag}`} description={`樹林社大相簿標籤 #${tag} 相關相簿,共 ${rows.length} 個。`}>
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>
+		<a href="/tags/">標籤雲</a><span aria-hidden="true">›</span>
+		#{tag}
+	</p>
+	<h1 class="reveal">#{tag}</h1>
+	<p class="tag-count">共 {rows.length} 個相關相簿</p>
+	<div class="album-grid reveal">
+		{rows.map((row) => (
+			<a class="album-card" href={row.url}>
+				{row.cover && <img class="album-cover" src={row.cover} alt="" loading="lazy" />}
+				<div class="album-card-body">
+					<h3>{row.title}</h3>
+				</div>
+			</a>
+		))}
+	</div>
+</Layout>
+
+<style>
+	.tag-count { color: var(--color-text-muted); margin-top: -0.5rem; }
+</style>

@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+const { title, description = '樹林社區大學課程與活動照片' } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-Hant">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title} - 樹林社大相簿</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&family=Lato:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a class="brand" href="/">
+					<span class="brand-zh">樹林社大相簿</span>
+					<span class="brand-en">SHULIN CC ALBUM</span>
+				</a>
+				<nav class="site-nav" aria-label="主選單">
+					<ul>
+						<li><a href="/">歷年相簿</a></li>
+						<li><a href="/category/">分類瀏覽</a></li>
+						<li><a href="/teacher/">老師索引</a></li>
+						<li><a href="/tags/">標籤雲</a></li>
+						<li><a href="/search/">搜尋</a></li>
+						<li><a class="back-to-main" href="https://www.shulincc.org/">回官網首頁 →</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main class="site-main">
+			<div class="site-main-inner">
+				<slot />
+			</div>
+		</main>
+
+		<footer class="site-footer">
+			<div class="site-footer-inner">
+				<p>新北市樹林社區大學｜(02) 2683-1680｜<a href="https://www.shulincc.org/">www.shulincc.org</a></p>
+				<p>&copy; {new Date().getFullYear()} 新北市樹林社區大學. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script is:inline>
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('is-visible');
+							io.unobserve(entry.target);
+						}
+					}
+				},
+				{ threshold: 0.12 }
+			);
+			document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+---
+// 2026-09-17 老師索引總覽——同一位老師常常年年開課、開好幾個班,原本完全沒有
+// 「這位老師開過哪些課」的入口,只能一頁一頁翻年度列表。這裡依 teacher 欄位分組
+// (跟分類/年度分組是同一種寫法),沒有填授課老師的相簿(teacher 留空)不計入。
+import Layout from '../../components/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allAlbums = await getCollection('classalbum');
+const byTeacher = allAlbums.reduce((acc, entry) => {
+	const t = entry.data.teacher;
+	if (!t) return acc;
+	(acc[t] ??= []).push(entry);
+	return acc;
+}, /** @type {Record<string, typeof allAlbums>} */ ({}));
+
+// 依開課數量由多到少排序,常態開課的老師排前面比較有意義,而不是隨機順序。
+const teachers = Object.keys(byTeacher).sort((a, b) => byTeacher[b].length - byTeacher[a].length);
+---
+
+<Layout title="老師索引" description="樹林社區大學歷年授課老師索引">
+	<p class="breadcrumb">
+		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>老師索引
+	</p>
+	<h1 class="reveal">老師索引</h1>
+
+	{teachers.length === 0 ? (
+		<p>目前還沒有相簿填寫授課老師。</p>
+	) : (
+		<div class="album-grid reveal">
+			{teachers.map((t) => (
+				<a class="album-card" href={`/teacher/${encodeURIComponent(t)}/`}>
+					<div class="album-card-body">
+						<h3>{t} 老師</h3>
+						<p class="album-meta">{byTeacher[t].length} 個相簿</p>
+					</div>
+				</a>
+			))}
+		</div>
+	)}
+</Layout>
