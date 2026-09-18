@@ -1,5 +1,6 @@
 ---
 title: "113年度 人與土地、食百味系列工作坊"
+category: 環境生態
 year: '113'
 semester: 活動
 date: 2025-03-24

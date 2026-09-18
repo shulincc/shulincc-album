@@ -1,5 +1,6 @@
 ---
 title: "103.01.20_大師輝毫"
+category: 文化傳承
 year: '103'
 semester: 活動
 date: 2014-01-20

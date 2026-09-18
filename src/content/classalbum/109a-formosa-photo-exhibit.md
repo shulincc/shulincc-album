@@ -1,5 +1,6 @@
 ---
 title: "看見福爾摩沙攝影展"
+category: 人文藝術
 year: '109'
 semester: 活動
 date: 2020-05-01

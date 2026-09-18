@@ -1,5 +1,6 @@
 ---
 title: "103.04.03_樹小園遊會"
+category: 社區活化
 year: '103'
 semester: 活動
 date: 2014-04-03

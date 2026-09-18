@@ -1,5 +1,6 @@
 ---
 title: "鐵道小旅行第三天"
+category: 社區活化
 year: '109'
 semester: 活動
 date: 2020-12-03

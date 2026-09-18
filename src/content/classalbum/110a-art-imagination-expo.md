@@ -1,5 +1,6 @@
 ---
 title: "藝想天開展覽"
+category: 文化傳承
 year: '110'
 semester: 活動
 date: 2021-01-02

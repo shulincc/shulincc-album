@@ -1,5 +1,6 @@
 ---
 title: "桃園大溪 社區參訪"
+category: 社區活化
 year: '112'
 semester: 活動
 date: 2024-04-14

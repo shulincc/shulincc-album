@@ -1,5 +1,6 @@
 ---
 title: "輕鬆開口說美語"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "Jenny"

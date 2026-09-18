@@ -1,5 +1,6 @@
 ---
 title: "112年秋季公民素養周 樹林校區"
+category: 社區活化
 year: '112'
 semester: 活動
 date: 2023-12-15

@@ -1,5 +1,6 @@
 ---
 title: "宜居文史走讀—三重篇"
+category: 社區活化
 year: '111'
 semester: 活動
 date: 2023-05-25

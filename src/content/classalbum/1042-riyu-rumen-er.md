@@ -1,5 +1,6 @@
 ---
 title: "日語入門(二)"
+category: 語言文化
 year: '104'
 semester: 秋季
 teacher: "趙華鈺"

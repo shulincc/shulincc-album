@@ -1,5 +1,6 @@
 ---
 title: "壓克力彩畫"
+category: 人文藝術
 year: '104'
 semester: 秋季
 teacher: "楊佳蓉"

@@ -1,5 +1,6 @@
 ---
 title: "113年度 農遊市集照片集"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2025-03-21

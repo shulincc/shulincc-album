@@ -1,5 +1,6 @@
 ---
 title: "銀髮族歌唱學日語"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "趙建華"

@@ -1,5 +1,6 @@
 ---
 title: "藝展．積微成著"
+category: 人文藝術
 year: '109'
 semester: 活動
 date: 2020-12-03

@@ -1,5 +1,6 @@
 ---
 title: "2019樹林新春嘉年華燈會繞境活動"
+category: 文化傳承
 year: '108'
 semester: 活動
 date: 2019-08-22

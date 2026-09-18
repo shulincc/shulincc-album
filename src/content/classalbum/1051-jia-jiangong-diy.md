@@ -1,5 +1,6 @@
 ---
 title: "呷健康～農產品加工DIY"
+category: 實用技能
 year: '105'
 semester: 春季
 teacher: "吳宗恩"

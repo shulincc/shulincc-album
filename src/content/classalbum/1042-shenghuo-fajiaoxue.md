@@ -1,5 +1,6 @@
 ---
 title: "生活發酵學與飲食健康"
+category: 健康促進
 year: '104'
 semester: 秋季
 teacher: "王正興"

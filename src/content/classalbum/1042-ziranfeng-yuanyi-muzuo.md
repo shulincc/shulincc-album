@@ -1,5 +1,6 @@
 ---
 title: "自然風園藝木作"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "張廷玉"

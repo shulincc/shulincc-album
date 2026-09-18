@@ -1,5 +1,6 @@
 ---
 title: "走讀樹林-黑金歲月"
+category: 社區活化
 year: '104'
 semester: 秋季
 teacher: "張偉郎"

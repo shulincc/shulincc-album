@@ -1,5 +1,6 @@
 ---
 title: "2024 04 18 彩筆的身影-樹林社區大學美展"
+category: 人文藝術
 year: '113'
 semester: 活動
 date: 2025-03-21

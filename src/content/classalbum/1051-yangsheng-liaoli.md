@@ -1,5 +1,6 @@
 ---
 title: "銀髮族天然養生健康料理"
+category: 實用技能
 year: '105'
 semester: 春季
 teacher: "楊翠娥"

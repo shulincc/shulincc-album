@@ -1,5 +1,6 @@
 ---
 title: "木工DIY：前進理想傢俱"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "鄭邦家"

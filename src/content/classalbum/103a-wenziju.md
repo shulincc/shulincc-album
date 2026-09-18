@@ -1,5 +1,6 @@
 ---
 title: "103年4月24日_文資局會勘樹林(二)"
+category: 社區活化
 year: '103'
 semester: 活動
 date: 2014-04-24

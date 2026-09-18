@@ -1,5 +1,6 @@
 ---
 title: "後村圳走讀"
+category: 社區活化
 year: '109'
 semester: 活動
 date: 2020-09-28

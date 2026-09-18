@@ -1,5 +1,6 @@
 ---
 title: "日本語GO!GO!GO!"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "黃廷嫥"

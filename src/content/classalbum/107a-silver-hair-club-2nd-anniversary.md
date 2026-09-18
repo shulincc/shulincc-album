@@ -1,5 +1,6 @@
 ---
 title: "銀髮族俱樂部兩周年慶"
+category: 肢體表演
 year: '107'
 semester: 活動
 date: 2018-08-02

@@ -1,5 +1,6 @@
 ---
 title: "中華和睦慈善協會 公益演出"
+category: 肢體表演
 year: '110'
 semester: 活動
 date: 2023-05-29

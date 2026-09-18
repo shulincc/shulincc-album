@@ -1,5 +1,6 @@
 ---
 title: "106年春季公共論壇週"
+category: 社區活化
 year: '106'
 semester: 活動
 date: 2017-05-01

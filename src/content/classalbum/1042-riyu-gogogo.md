@@ -1,5 +1,6 @@
 ---
 title: "日本語GoGoGo"
+category: 語言文化
 year: '104'
 semester: 秋季
 teacher: "黃廷嫥"

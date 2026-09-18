@@ -1,5 +1,6 @@
 ---
 title: "大家的日本語進階Ⅰ"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "陳映羽"

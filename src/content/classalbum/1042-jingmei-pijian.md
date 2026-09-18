@@ -1,5 +1,6 @@
 ---
 title: "精美皮件輕鬆做"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "陳湘蘭"

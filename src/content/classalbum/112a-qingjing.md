@@ -1,5 +1,6 @@
 ---
 title: "清淨山林 清淨心(112春)"
+category: 環境生態
 year: '112'
 semester: 活動
 date: 2023-06-09

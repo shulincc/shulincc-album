@@ -1,5 +1,6 @@
 ---
 title: "112年度 農遊生活節 貓路徑畫畫體驗"
+category: 人文藝術
 year: '112'
 semester: 活動
 date: 2023-11-12

@@ -1,5 +1,6 @@
 ---
 title: "藝樹印象～攝影展"
+category: 人文藝術
 year: '102'
 semester: 活動
 date: 2015-11-17

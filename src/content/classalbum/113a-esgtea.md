@@ -1,5 +1,6 @@
 ---
 title: "113年度 ESG千人中秋茶禪"
+category: 健康促進
 year: '113'
 semester: 活動
 date: 2025-03-23

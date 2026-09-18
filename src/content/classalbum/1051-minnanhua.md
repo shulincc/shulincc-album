@@ -1,5 +1,6 @@
 ---
 title: "歡喜來講閩南話"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "王明美"

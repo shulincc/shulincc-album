@@ -1,5 +1,6 @@
 ---
 title: "獨自幸福．彩筆的邀約"
+category: 人文藝術
 year: '110'
 semester: 活動
 date: 2021-01-20

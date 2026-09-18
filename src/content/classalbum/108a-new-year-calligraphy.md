@@ -1,5 +1,6 @@
 ---
 title: "筆落音起迎新春-春帖報喜賀新歲"
+category: 文化傳承
 year: '108'
 semester: 活動
 date: 2019-08-20

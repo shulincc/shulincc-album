@@ -1,5 +1,6 @@
 ---
 title: "111年春季公民素養週-樹林校區"
+category: 社區活化
 year: '111'
 semester: 活動
 date: 2023-05-23

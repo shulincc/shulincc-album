@@ -1,5 +1,6 @@
 ---
 title: "103年8月8日_環保團體研討會"
+category: 環境生態
 year: '103'
 semester: 活動
 date: 2014-08-08

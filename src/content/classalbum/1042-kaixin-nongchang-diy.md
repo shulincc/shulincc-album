@@ -1,5 +1,6 @@
 ---
 title: "開心農場與天然手工DIY"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "楊翠娥"

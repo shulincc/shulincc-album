@@ -1,5 +1,6 @@
 ---
 title: "鐵道志工參訪活動-侯硐煤礦工文史"
+category: 社區活化
 year: '109'
 semester: 活動
 date: 2020-10-30

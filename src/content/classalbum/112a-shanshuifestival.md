@@ -1,5 +1,6 @@
 ---
 title: "112年 山水綠意生活節"
+category: 社區活化
 year: '112'
 semester: 活動
 date: 2023-11-16

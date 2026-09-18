@@ -1,5 +1,6 @@
 ---
 title: "可愛動物畫插畫—藝術行動分享會"
+category: 人文藝術
 year: '111'
 semester: 活動
 date: 2023-05-25

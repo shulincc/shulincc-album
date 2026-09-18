@@ -1,5 +1,6 @@
 ---
 title: "王作霖先師逝世百周年追思活動"
+category: 社區活化
 year: '110'
 semester: 活動
 date: 2023-05-26

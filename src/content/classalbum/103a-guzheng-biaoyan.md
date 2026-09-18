@@ -1,5 +1,6 @@
 ---
 title: "103.02.08_古箏琴班社區表演"
+category: 社區活化
 year: '103'
 semester: 活動
 date: 2014-02-08

@@ -1,5 +1,6 @@
 ---
 title: "113年秋季公民素養系列講座 戶外系列"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2025-03-21

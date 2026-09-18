@@ -1,5 +1,6 @@
 ---
 title: "奇思妙想"
+category: 人文藝術
 year: '109'
 semester: 活動
 date: 2020-01-02

@@ -1,5 +1,6 @@
 ---
 title: "健康瑜珈B"
+category: 健康促進
 year: '104'
 semester: 秋季
 teacher: "盧靜瑛"

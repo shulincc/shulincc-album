@@ -1,5 +1,6 @@
 ---
 title: "快樂烘焙教室A"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "吳素枝"

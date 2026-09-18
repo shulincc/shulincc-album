@@ -1,5 +1,6 @@
 ---
 title: "113年 春季公民素養系列講座 活動回顧"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2024-08-15

@@ -1,5 +1,6 @@
 ---
 title: "【供時代】 社區大學公共性博覽會參訪"
+category: 社區活化
 year: '111'
 semester: 活動
 date: 2023-05-24

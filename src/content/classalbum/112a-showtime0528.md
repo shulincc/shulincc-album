@@ -1,5 +1,6 @@
 ---
 title: "0528秀泰行動教室"
+category: 文化傳承
 year: '112'
 semester: 活動
 date: 2024-04-10

@@ -1,5 +1,6 @@
 ---
 title: "106.09.16 友善農耕騎步走"
+category: 環境生態
 year: '106'
 semester: 活動
 date: 2017-09-16

@@ -1,5 +1,6 @@
 ---
 title: "師工學參訪與研習-志工培訓"
+category: 實用技能
 year: '109'
 semester: 活動
 date: 2020-01-08

@@ -1,5 +1,6 @@
 ---
 title: "水．色藝術展藝術展開幕儀式"
+category: 人文藝術
 year: '107'
 semester: 活動
 date: 2018-07-09

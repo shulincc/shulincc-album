@@ -1,5 +1,6 @@
 ---
 title: "爵士鋼琴A"
+category: 人文藝術
 year: '104'
 semester: 秋季
 teacher: "黃青瑜"

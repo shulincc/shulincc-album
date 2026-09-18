@@ -1,5 +1,6 @@
 ---
 title: "106.09.16 紅麴文化嘉年華"
+category: 健康促進
 year: '106'
 semester: 活動
 date: 2017-09-16

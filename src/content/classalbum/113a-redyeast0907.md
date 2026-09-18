@@ -1,5 +1,6 @@
 ---
 title: "2024 09 07紅麴文化節 活動照片集"
+category: 健康促進
 year: '113'
 semester: 活動
 date: 2025-03-21

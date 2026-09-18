@@ -1,5 +1,6 @@
 ---
 title: "113年度 迎尪公 祭典紀錄"
+category: 文化傳承
 year: '113'
 semester: 活動
 date: 2025-03-23

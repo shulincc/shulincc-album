@@ -1,5 +1,6 @@
 ---
 title: "110年度秋季成果展"
+category: 社區活化
 year: '110'
 semester: 活動
 date: 2023-05-26

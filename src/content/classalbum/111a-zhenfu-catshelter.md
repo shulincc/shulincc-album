@@ -1,5 +1,6 @@
 ---
 title: "圳福里認養小棧 參訪"
+category: 人文藝術
 year: '111'
 semester: 活動
 date: 2023-05-25

@@ -1,5 +1,6 @@
 ---
 title: "2020新北市樹林紅麴文化節"
+category: 健康促進
 year: '109'
 semester: 活動
 date: 2020-09-12

@@ -1,5 +1,6 @@
 ---
 title: "103.02.19_武林國小生態研習營"
+category: 環境生態
 year: '103'
 semester: 活動
 date: 2014-02-19

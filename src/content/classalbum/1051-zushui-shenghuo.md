@@ -1,5 +1,6 @@
 ---
 title: "租稅與生活"
+category: 實用技能
 year: '105'
 semester: 春季
 teacher: "稅捐處師資群"

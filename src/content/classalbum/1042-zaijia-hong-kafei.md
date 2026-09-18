@@ -1,5 +1,6 @@
 ---
 title: "在家烘咖啡"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "黃鵬錡"

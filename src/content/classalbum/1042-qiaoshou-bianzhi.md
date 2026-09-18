@@ -1,5 +1,6 @@
 ---
 title: "巧手編織：毛衣與巧編籃"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "殷月梅"

@@ -1,5 +1,6 @@
 ---
 title: "社交、國標雙人舞～華爾滋、3步吉魯巴"
+category: 肢體表演
 year: '105'
 semester: 春季
 teacher: "Gina Lee"

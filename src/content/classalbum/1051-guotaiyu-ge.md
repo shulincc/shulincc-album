@@ -1,5 +1,6 @@
 ---
 title: "歡唱國台語歌"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "陳玉玟"

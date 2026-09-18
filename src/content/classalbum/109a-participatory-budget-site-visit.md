@@ -1,5 +1,6 @@
 ---
 title: "參與式預算-場地探勘"
+category: 社區活化
 year: '109'
 semester: 活動
 date: 2020-03-16

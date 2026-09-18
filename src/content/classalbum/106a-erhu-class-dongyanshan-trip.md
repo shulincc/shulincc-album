@@ -1,5 +1,6 @@
 ---
 title: "106.07.29 二胡音樂講堂-東眼山一遊"
+category: 文化傳承
 year: '106'
 semester: 活動
 date: 2017-07-29

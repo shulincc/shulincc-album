@@ -1,5 +1,6 @@
 ---
 title: "112年度 農遊生活節 農遊、繪本、及走古"
+category: 社區活化
 year: '112'
 semester: 活動
 date: 2023-11-08

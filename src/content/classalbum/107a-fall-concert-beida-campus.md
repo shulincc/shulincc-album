@@ -1,5 +1,6 @@
 ---
 title: "107.12.23秋季成果展音樂會北大校區"
+category: 人文藝術
 year: '107'
 semester: 活動
 date: 2018-12-25

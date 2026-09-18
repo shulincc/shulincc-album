@@ -1,5 +1,6 @@
 ---
 title: "樹林農遊生活節 平安夜市集"
+category: 社區活化
 year: '112'
 semester: 活動
 date: 2023-12-25

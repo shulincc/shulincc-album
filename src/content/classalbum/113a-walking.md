@@ -1,5 +1,6 @@
 ---
 title: "113年度 散步學 社團 課程及活動照片"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2025-03-23

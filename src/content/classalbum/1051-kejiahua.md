@@ -1,5 +1,6 @@
 ---
 title: "共下來學講客家話"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "朱瑩琦"

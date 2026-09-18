@@ -1,5 +1,6 @@
 ---
 title: "愛相隨ｘ可愛動物插畫 成果展"
+category: 人文藝術
 year: '111'
 semester: 活動
 date: 2022-02-14

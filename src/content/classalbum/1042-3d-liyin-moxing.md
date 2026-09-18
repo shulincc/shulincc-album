@@ -1,5 +1,6 @@
 ---
 title: "3D列印模型與元件設計"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "曹民和"

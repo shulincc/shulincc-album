@@ -1,5 +1,6 @@
 ---
 title: "公民週-109.11.04"
+category: 社區活化
 year: '109'
 semester: 活動
 date: 2020-11-04

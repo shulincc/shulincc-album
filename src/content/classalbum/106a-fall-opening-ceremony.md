@@ -1,5 +1,6 @@
 ---
 title: "106年秋季班開學典禮"
+category: 語言文化
 year: '106'
 semester: 活動
 date: 2017-09-19

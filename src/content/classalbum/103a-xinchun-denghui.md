@@ -1,5 +1,6 @@
 ---
 title: "103.02.11-17_新春嘉年華燈會"
+category: 文化傳承
 year: '103'
 semester: 活動
 date: 2014-02-11

@@ -1,5 +1,6 @@
 ---
 title: "平板電腦手機生活應用(入門)"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "林佩君"

@@ -1,5 +1,6 @@
 ---
 title: "生活創意美學"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "黃淑娟"

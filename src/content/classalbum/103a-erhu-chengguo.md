@@ -1,5 +1,6 @@
 ---
 title: "103.01.13_聽二胡在歌唱自主成果展"
+category: 文化傳承
 year: '103'
 semester: 活動
 date: 2014-01-13

@@ -1,5 +1,6 @@
 ---
 title: "103年4月25~26日_十三行博物館"
+category: 社區活化
 year: '103'
 semester: 活動
 date: 2014-04-25

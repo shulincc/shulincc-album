@@ -1,5 +1,6 @@
 ---
 title: "110年秋季公民素養周 線上講座"
+category: 社區活化
 year: '110'
 semester: 活動
 date: 2023-05-29

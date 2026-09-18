@@ -1,5 +1,6 @@
 ---
 title: "112年度 紅麴文化節"
+category: 健康促進
 year: '112'
 semester: 活動
 date: 2023-11-06

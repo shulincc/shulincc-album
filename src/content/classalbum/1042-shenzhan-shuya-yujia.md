@@ -1,5 +1,6 @@
 ---
 title: "伸展紓壓瑜珈"
+category: 健康促進
 year: '104'
 semester: 秋季
 teacher: "陳雅慧"

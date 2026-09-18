@@ -1,5 +1,6 @@
 ---
 title: "2024 12 01 山水綠意生活節"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2025-03-21

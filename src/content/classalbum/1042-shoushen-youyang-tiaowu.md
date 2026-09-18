@@ -1,5 +1,6 @@
 ---
 title: "瘦身有氧快樂來跳舞"
+category: 肢體表演
 year: '104'
 semester: 秋季
 teacher: "吳紫綾"

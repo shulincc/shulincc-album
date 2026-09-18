@@ -1,5 +1,6 @@
 ---
 title: "夏日舒活 樹西里社區活動"
+category: 健康促進
 year: '111'
 semester: 活動
 date: 2023-05-26

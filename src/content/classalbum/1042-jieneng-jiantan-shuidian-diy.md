@@ -1,5 +1,6 @@
 ---
 title: "節能減碳居家水電DIY"
+category: 實用技能
 year: '104'
 semester: 秋季
 teacher: "温南福"

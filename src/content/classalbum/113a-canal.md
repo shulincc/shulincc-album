@@ -1,5 +1,6 @@
 ---
 title: "113年度 十二股圳與後村圳分水閘清理活動"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2025-03-21

@@ -1,5 +1,6 @@
 ---
 title: "美語音標與初級會話"
+category: 語言文化
 year: '105'
 semester: 春季
 teacher: "Vivien"

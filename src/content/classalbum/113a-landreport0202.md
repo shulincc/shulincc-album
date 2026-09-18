@@ -1,5 +1,6 @@
 ---
 title: "嚇!樹林有這個地方‧怪奇地景誌發表會"
+category: 社區活化
 year: '113'
 semester: 活動
 date: 2024-04-15

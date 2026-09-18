@@ -1,5 +1,6 @@
 ---
 title: "彩墨寄情"
+category: 人文藝術
 year: '109'
 semester: 活動
 date: 2020-11-02

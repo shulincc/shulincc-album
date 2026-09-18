@@ -1,5 +1,6 @@
 ---
 title: "ART LIFE 藝術展"
+category: 人文藝術
 year: '109'
 semester: 活動
 date: 2020-02-29

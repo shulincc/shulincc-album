@@ -1,5 +1,6 @@
 ---
 title: "0604秀泰聯合展演"
+category: 語言文化
 year: '112'
 semester: 活動
 date: 2024-04-10

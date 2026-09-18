@@ -1,5 +1,6 @@
 ---
 title: "步道美學：美化人生"
+category: 環境生態
 year: '104'
 semester: 秋季
 teacher: "自然步道協會講師群"

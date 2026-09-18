@@ -1,5 +1,6 @@
 ---
 title: "清淨山林，親近心。覺知瑜伽"
+category: 健康促進
 year: '111'
 semester: 活動
 date: 2022-07-02
