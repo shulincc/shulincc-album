@@ -1,0 +1,40 @@
+---
+title: "113年度春季班 第一次班級代表會議"
+year: '113'
+semester: 活動
+date: 2024-04-15
+layout: gallery
+intro: "此貼文紀錄113年年度，班級代表會議相片集：包含3月16日春季第一次班代會議及5月15日春季第二次班代會議。"
+photos:
+  - image: "https://assets.shulincc.org/album/113/1130316-3_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-4_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-1_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-2_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-3_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-5_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-7_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-10_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-12_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-13_orig.jpeg"
+  - image: "https://assets.shulincc.org/album/113/1130316-10_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-11_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-12_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-14_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-16_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-17_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-20_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-21_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-22_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-23_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-27_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-29_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-30_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/1130316-32_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/dsc01070_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/img-5505_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/img-5506_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/img-5507_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/img-5508_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/img-5509_orig.jpg"
+  - image: "https://assets.shulincc.org/album/113/dsc01069_orig.jpg"
+---
