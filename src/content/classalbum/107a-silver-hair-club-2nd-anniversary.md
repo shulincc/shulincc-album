@@ -1,0 +1,42 @@
+---
+title: "銀髮族俱樂部兩周年慶"
+year: '107'
+semester: 活動
+date: 2018-08-02
+layout: gallery
+intro: "今天晴空萬里的同時，也是銀髮族俱樂部兩歲生日喔~兩周年的銀髮俱樂部除了有美妙的音樂與華麗的舞蹈外，同時也有好玩的活動與美味可口的飲料和餐點，也感謝今天前來的長官貴賓們，跟我們一起慶祝銀髮族俱樂部兩周年慶~"
+photos:
+  - image: "https://assets.shulincc.org/album/107/002_5_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/003_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/004_5_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/006_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/007_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/008_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/009_7_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/010_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/011_5_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/013_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/014_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/015_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/016_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/017_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/018_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/019_5_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/020_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/021_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/022_6_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/023_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/024_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/025_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/026_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/027_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/028_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/029_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/030_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/031_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/032_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/033_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/034_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/035_4_orig.jpg"
+  - image: "https://assets.shulincc.org/album/107/001_8_orig.jpg"
+---
