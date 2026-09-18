@@ -1,0 +1,42 @@
+---
+title: "樹林農遊生活節 花生日"
+year: '111'
+semester: 活動
+date: 2023-05-24
+layout: gallery
+intro: "花生什麼事了？花生已經被我們採收起來啦～～～在北大旁的農園，我們揮灑汗水採收出新鮮的花生，在在地青農邱昌宏老師的引導下，親身體驗在地農業這些年的變化。北大集合學員，感謝邱昌宏老師今日撥冗協助本次活動，介紹本次活動行程及精神，前去農場，走經涵洞，牆上的壁畫精采了無趣陰暗的洞穴，喧囂都市中難以想像的愜意等待著我們，邱老師開始為我們介紹此地的農業發展興衰，學員們跟隨老師的指導下開始低頭作業，與環境共生的無農藥農業可以向四周多樣的蟲朋友得到見證，大豐收後開始處理作物，一顆一顆篩選並洗去泥沙，再進行翻炒，不停翻炒後的花生更加脆口好吃，葉子與花生殼也成為今天小旅行繪畫的最佳材料，卡滋卡滋！炒好的花生一口接一口停不下來，為今天的活動留下美味的映象。"
+photos:
+  - image: "https://assets.shulincc.org/album/111/293755234-3207234592852622-830413497920171212-n_orig.png"
+  - image: "https://assets.shulincc.org/album/111/dsc08242_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08243_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08248_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08253_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08258_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08260_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08262_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08266_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08268_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08271_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08277_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08280_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08295_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08296_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08303_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08304_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08310_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08333_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08326_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08343_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08320_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08340_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08346_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08352_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08351_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08356_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08394_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08412_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08419_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08426_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08458_orig.jpg"
+  - image: "https://assets.shulincc.org/album/111/dsc08463_orig.jpg"
+---
