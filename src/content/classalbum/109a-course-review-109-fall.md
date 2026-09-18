@@ -1,0 +1,42 @@
+---
+title: "課程審查-109年秋季課審"
+year: '109'
+semester: 活動
+date: 2020-05-06
+layout: gallery
+intro: "樹林社大109年度秋季課程審查會議紀錄。"
+photos:
+  - image: "https://assets.shulincc.org/album/109/img20200506130542_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506131304_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506131825_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506131855_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506131958_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506132735_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133539_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133541_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133544_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133556_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133658_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133821_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506133935_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506134816_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506135258_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506135411_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506140302_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506140317_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506140630_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506141013_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506141041_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506141226_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506150207_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506160007_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506160018_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506160022_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506161036_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506161824_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506163106_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506163501_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506165427_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506170555_orig.jpg"
+  - image: "https://assets.shulincc.org/album/109/img20200506173305_orig.jpg"
+---
