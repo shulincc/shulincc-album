@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-Hant">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>樹林社大相簿後台</title>
+	</head>
+	<body>
+		<!-- 2026-09-18 補上這個檔案——config.yml 本身不會讓 /admin 這個網址真的能打開,
+		     Sveltia CMS 需要這份 HTML 去載入它的 JS 才會真的顯示後台畫面。少了這個檔案,
+		     /admin 在 Cloudflare Pages 上找不到對應的靜態檔案,又沒有自訂 404 頁面,
+		     結果是被「靜默轉址回首頁」,不會顯示錯誤訊息,容易誤以為是網域設定的問題
+		     (跟主站之前記錄過的 404 靜默轉址首頁是同一種行為,見開發歷程文件)。
+		     寫法照抄主站 shulincc-site 的 public/admin/index.html:官方文件建議的兩個
+		     一般 <script>(不是 type="module")接續放,第一個載入 CDN 版 sveltia-cms.js
+		     會自動把 CMS 掛到 window 上。 -->
+		<script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+	</body>
+</html>

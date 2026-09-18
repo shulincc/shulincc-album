@@ -40,9 +40,9 @@ slug:
 # 實際建立的 R2 bucket 資訊,目前是佔位值,不能直接上線使用。
 media_libraries:
   cloudflare_r2:
-    access_key_id: 'REPLACE_WITH_R2_ACCESS_KEY_ID'
+    access_key_id: '27a070efd04d56160d2b2a5b44e5ca91'
     bucket: 'shulincc-assets' # 沿用主站規劃的同一顆 bucket,用 prefix 區分不同用途
-    account_id: 'REPLACE_WITH_CLOUDFLARE_ACCOUNT_ID'
+    account_id: '25e3842bf7f861885f802306c3882617'
     public_url: 'https://assets.shulincc.org' # 沿用主站規劃的 R2 自訂網域
     prefix: 'album/115/' # 每年手動更新這一行
   all:
