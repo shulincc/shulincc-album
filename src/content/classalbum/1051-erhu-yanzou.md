@@ -1,0 +1,14 @@
+---
+title: "二胡演奏"
+year: '105'
+semester: 春季
+teacher: "賴得睿"
+date: 2016-08-02
+layout: gallery
+intro: "音樂是人類古老的藝術與娛樂活動之一，現今大眾傳播媒體發達，流行文化大量且多樣的出現在你我之間，雖然龐大卻也快速而容易消失；本堂課希望能讓你在每日忙碌的步調中，以二胡會友，另闢人間淨土，返璞歸真的讓你在每一堂課理與此樂器交流談心"
+photos:
+  - image: "https://assets.shulincc.org/album/105/dscn9935_orig.jpg"
+  - image: "https://assets.shulincc.org/album/105/dscn9936_orig.jpg"
+  - image: "https://assets.shulincc.org/album/105/dscn9937_orig.jpg"
+  - image: "https://assets.shulincc.org/album/105/dscn9939_orig.jpg"
+---
