@@ -1,14 +1,16 @@
 ---
-// 2026-09-17 分類總覽頁——依 classalbum 的 category 欄位分組算數量,做法照抄
-// src/pages/index.astro 依年度分組的邏輯,只是分組欄位換成 category。沒有分類的
-// 相簿(category 留空,例如舊資料裡少數沒有課程代碼的活動)不計入任何分類卡片,
-// 但也不會出錯——單純不會出現在這個列表裡,同仁之後幫它補上分類就會自動出現。
+// 2026-09-18 分類總覽頁——依樹林社大官方《115春 課程學群說明》文件的兩層結構
+// (學群 → 子類別)分組顯示,不再是單純一排分類卡片。categories collection 裡每個
+// 子類別可以填 group 欄位(所屬學群),這裡先依 group 分段、段內再依相簿數量排序;
+// 沒有填 group 的子類別(同仁之後自訂、沒有對應官方學群的分類)統一歸進「其他分類」
+// 段落,排在最後,不會出錯或消失不見。
 import Layout from '../../components/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const allAlbums = await getCollection('classalbum');
 const categories = await getCollection('categories');
 const titleBySlug = new Map(categories.map((c) => [c.id, c.data.title]));
+const groupBySlug = new Map(categories.map((c) => [c.id, c.data.group]));
 
 const byCategory = allAlbums.reduce((acc, entry) => {
 	const c = entry.data.category;
@@ -17,10 +19,28 @@ const byCategory = allAlbums.reduce((acc, entry) => {
 	return acc;
 }, /** @type {Record<string, typeof allAlbums>} */ ({}));
 
-const cats = Object.keys(byCategory).sort((a, b) => byCategory[b].length - byCategory[a].length);
+const cats = Object.keys(byCategory);
+
+// 依所屬學群把子類別分組;官方 4 學群依課程數多寡固定排序(對照 PDF 統計),
+// 沒有對應學群的子類別統一放進「其他分類」。
+const GROUP_ORDER = ['藝術文化', '多元技能', '健康身心', '環境社區'];
+const groups = new Map(/** @type {[string, string[]][]} */ (GROUP_ORDER.map((g) => [g, []])));
+const otherCats = [];
+for (const c of cats) {
+	const g = groupBySlug.get(c);
+	if (g && groups.has(g)) {
+		groups.get(g).push(c);
+	} else {
+		otherCats.push(c);
+	}
+}
+for (const [, list] of groups) {
+	list.sort((a, b) => byCategory[b].length - byCategory[a].length);
+}
+otherCats.sort((a, b) => byCategory[b].length - byCategory[a].length);
 ---
 
-<Layout title="分類瀏覽" description="樹林社區大學歷年課程與活動照片相簿,依分類瀏覽">
+<Layout title="分類瀏覽" description="樹林社區大學歷年課程與活動照片相簿,依學群分類瀏覽">
 	<p class="breadcrumb">
 		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>分類瀏覽
 	</p>
@@ -29,13 +49,35 @@ const cats = Object.keys(byCategory).sort((a, b) => byCategory[b].length - byCat
 	{cats.length === 0 ? (
 		<p>目前還沒有相簿標好分類。</p>
 	) : (
-		<div class="year-grid reveal">
-			{cats.map((c) => (
-				<a class="year-card" href={`/category/${encodeURIComponent(c)}/`}>
-					<span class="year-num" style="font-size:1.3rem;">{titleBySlug.get(c) ?? c}</span>
-					<span class="year-count">{byCategory[c].length} 個相簿</span>
-				</a>
-			))}
-		</div>
+		<>
+			{GROUP_ORDER.map((g) =>
+				groups.get(g).length ? (
+					<section class="reveal" style="margin-bottom:2.5rem;">
+						<h2 style="font-size:1.1rem; margin-bottom:0.8rem;">{g}學群</h2>
+						<div class="year-grid">
+							{groups.get(g).map((c) => (
+								<a class="year-card" href={`/category/${encodeURIComponent(c)}/`}>
+									<span class="year-num" style="font-size:1.3rem;">{titleBySlug.get(c) ?? c}</span>
+									<span class="year-count">{byCategory[c].length} 個相簿</span>
+								</a>
+							))}
+						</div>
+					</section>
+				) : null
+			)}
+			{otherCats.length ? (
+				<section class="reveal" style="margin-bottom:2.5rem;">
+					<h2 style="font-size:1.1rem; margin-bottom:0.8rem;">其他分類</h2>
+					<div class="year-grid">
+						{otherCats.map((c) => (
+							<a class="year-card" href={`/category/${encodeURIComponent(c)}/`}>
+								<span class="year-num" style="font-size:1.3rem;">{titleBySlug.get(c) ?? c}</span>
+								<span class="year-count">{byCategory[c].length} 個相簿</span>
+							</a>
+						))}
+					</div>
+				</section>
+			) : null}
+		</>
 	)}
 </Layout>
