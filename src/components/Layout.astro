@@ -1,11 +1,29 @@
 ---
 import '../styles/global.css';
 
+// 2026-09-19 使用者發現在 LINE/Telegram 分享連結完全沒有預覽卡片(沒有圖片、
+// 沒有自訂標題摘要)——查證後確實整站沒有任何 Open Graph/Twitter Card 標籤。
+// 補法沿用主站 shulincc-site 的 Layout.astro 同一套做法:image/type 都設成
+// optional,沒有個別傳入時退回全站預設圖片(icon-192.png),不用一次把所有
+// 呼叫 Layout 的地方都改完才能上線。image 統一補成絕對網址,因為 OG/Twitter
+// 標籤規範要求圖片網址必須是絕對路徑,相對路徑在部分分享預覽(尤其 LINE)會
+// 直接讀不到圖。
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
+	// 'article' 用在個別班級相簿頁,'website' 用在首頁/各種列表頁,只是 og:type
+	// 語意標示,不影響頁面實際渲染。
+	type?: 'website' | 'article';
 }
-const { title, description = '樹林社區大學課程與活動照片' } = Astro.props;
+const { title, description = '樹林社區大學課程與活動照片', image, type = 'website' } = Astro.props;
+
+const SITE_URL = 'https://album.shulincc.org';
+const ogImage = image
+	? image.startsWith('http')
+		? image
+		: `${SITE_URL}${image.startsWith('/') ? '' : '/'}${image}`
+	: `${SITE_URL}/icon-192.png`;
 ---
 <!doctype html>
 <html lang="zh-Hant">
@@ -14,6 +32,17 @@ const { title, description = '樹林社區大學課程與活動照片' } = Astro
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title} - 樹林社大相簿</title>
 		<meta name="description" content={description} />
+		<!-- Open Graph(FB/LINE 分享預覽)+ Twitter Card 標籤。og:url 故意省略,由分享當下的瀏覽器網址列網址頂替。 -->
+		<meta property="og:site_name" content="樹林社大相簿" />
+		<meta property="og:type" content={type} />
+		<meta property="og:title" content={`${title} - 樹林社大相簿`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content="zh_TW" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${title} - 樹林社大相簿`} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<!-- 網站icon:沿用主站(shulincc.org)同一套圓形樹徽章logo,保持品牌一致 -->
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />

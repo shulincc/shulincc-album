@@ -40,7 +40,12 @@ if (layout === 'article') {
 }
 ---
 
-<Layout title={title} description={intro ?? `${entry.data.year} 年 ${title}`}>
+<Layout
+	title={title}
+	description={intro ?? `${entry.data.year} 年 ${title}`}
+	image={cover ?? photos[0]?.image}
+	type="article"
+>
 	<p class="breadcrumb">
 		<a href="/">歷年相簿</a><span aria-hidden="true">›</span>
 		<a href={`/${year}/`}>{year} 年相簿</a><span aria-hidden="true">›</span>
